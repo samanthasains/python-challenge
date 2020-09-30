@@ -23,27 +23,22 @@ with open('C:/Users/saman/Documents/NU_Data_Science_Bootcamp/python-challenge/Py
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',') 
-    for row in csvreader:
+    header = next(csvreader)
+    if header != None:
+        for row in csvreader:
         
-        #Add date
-        date.append(row[0])
+            #Add date
+            date.append(row[0])
     
-        #Add profit/loss
-        profitLoss.append(row[1]) 
-
-# Delete headers
-date.remove('Date')
-profitLoss.remove('Profit/Losses')
+            #Add profit/loss
+            profitLoss.append(int(row[1])) 
 
 # Find the total number of months included in the dataset - count of items
 totalMonths = len(date)
 
-#Convert profitLoss from string to integer
-profitLoss = [int(i for i in profitLoss)]
-
-# Find the net total amount of "Profit/Losses" over the entire period - sum of the values in [1]
-For i in profitLoss:
-    netTotal=netTotal + i
+#Find the net total amount of "Profit/Losses" over the entire period - sum of the values in [1]
+totalAmount = sum(profitLoss)                        
+print(totalAmount)
 
 # Find the average of the changes in "Profit/Losses" over the entire period - average of the values in [1]
 averageChange = netTotal/totalMonths
