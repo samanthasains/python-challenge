@@ -51,8 +51,8 @@ for x in range(0,totalMonths-1):
 averageChange=(sum(revenueChange)/(totalMonths-1))
 
 # # # Print the analysis to the terminal and export a text file with the results
-# print('Financial Analysis\n----------------')
-# print({'Total months' & {totalMonths})
-# print('Average Change: $' + averageChange)
-# print('Greatest Increase in Profits: ' + greatestIncrease)
-# print('Greatest Descrease in Profits: ' + greatestDecrease)
+print('Financial Analysis\n----------------')
+print('Total months : ' + str(totalMonths))
+print('Average Change: $' + str(averageChange))
+print('Greatest Increase in Profits: ' + str(greatestIncrease))
+print('Greatest Descrease in Profits: ' + str(greatestDecrease))
