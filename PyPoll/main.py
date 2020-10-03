@@ -30,36 +30,40 @@ candidateThree=0
 candidateFour=0
 voteTotals=0
 
-#Generate vote numbers for each candidate
+#create dictionary to store candidate data
+voteDict = {}
+
+#Generate vote numbers for each candidate & print to dictionary
 for name in candidate:
     if name == candidate_names[0]:
         candidateOne = candidateOne + 1
+        voteDict[candidate_names[0]]=candidateOne, "{:.0%}".format(candidateOne/totalVotes)
         if candidateOne > voteTotals:
             voteTotals=candidateOne
-            winner=candidate_names[0]    
     if name == candidate_names[1]:
         candidateTwo=candidateTwo+1
+        voteDict[candidate_names[1]]=candidateTwo, "{:.0%}".format(candidateTwo/totalVotes)
         if candidateTwo > voteTotals:
-            voteTotals=candidateTwo
-            winner=candidate_names[1]   
+            voteTotals=candidateTwo 
     if name == candidate_names[2]:
         candidateThree=candidateThree+1
+        voteDict[candidate_names[2]]=candidateThree, "{:.0%}".format(candidateThree/totalVotes)
         if candidateThree > voteTotals:
-            voteTotals=candidateThree
-            winner=candidate_names[2]   
+            voteTotals=candidateThree  
     if name==candidate_names[3]:
         candidateFour=candidateFour+1
+        voteDict[candidate_names[3]]=candidateFour, "{:.0%}".format(candidateFour/totalVotes)  
         if candidateFour > voteTotals:
-            voteTotals=candidateFour
-            winner=candidate_names[3]   
+            voteTotals=candidateFour  
+
+#Sort dictionary by votes
+results=dict(sorted(voteDict.items(), key=lambda x: x[1], reverse=True))    
 
 #Print results to text file
 print('Elections Results\n----------------')
 print('Total Votes : ' + str(totalVotes) + '\n----------------')
-print(candidate_names[0] + ': ' + ("{:.0%}".format(candidateOne/totalVotes)) + ' (' + str(candidateOne) + ')')
-print(candidate_names[1] + ': ' + ("{:.0%}".format(candidateTwo/totalVotes)) + ' (' + str(candidateTwo) + ')')
-print(candidate_names[2] + ': ' + ("{:.0%}".format(candidateThree/totalVotes)) + ' (' + str(candidateThree) + ')')
-print(candidate_names[3] + ': ' + ("{:.0%}".format(candidateFour/totalVotes)) + ' (' + str(candidateFour) + ')')
+for k,v in results.items():
+    print(k,v)  
 print('----------------')
-print('Winner: ' + winner + '\n----------------')
+print('Winner: ' + str(next(iter(results))) + '\n----------------')
 
