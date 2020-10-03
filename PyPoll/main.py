@@ -13,3 +13,36 @@
 #The total number of votes each candidate won
 
 #The winner of the election based on popular vote.
+
+print('start!')
+
+
+#create lists
+candidate = []
+
+# Path to collect data from the Resources folder
+import csv
+
+with open('C:/Users/saman/Documents/NU_Data_Science_Bootcamp/python-challenge/PyPoll/Resources/election_data.csv', 'r') as csvfile:
+
+    # CSV reader specifies delimiter and variable that holds contents
+    csvreader = csv.reader(csvfile, delimiter=',')
+    header = next(csvreader)
+ 
+    if header != None:
+        for row in csvreader:
+        
+            #Add candidates
+            candidate.append(row[2])
+    
+#Read data to python lists from Voter ID row[0] and Candidate (row[2])
+
+#Count of items in list totalVotes=(len)
+
+#Generate unique entries from list of candidates
+
+#Somehow create dictionary of voter ID associated with each candidate?
+
+#candidatePercent = len(each_candidate)/totalVotes
+
+#
