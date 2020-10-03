@@ -58,3 +58,10 @@ print('Greatest Increase in Profits: ' + str(greatestIncrease[0]) + ' ($' + str(
 print('Greatest Descrease in Profits: ' + str(greatestDecrease[0]) + ' ($' + str(greatestDecrease[1]) + ')')
 
 # Export analysis to text file with the results
+f= open("PyBankResults.txt", "a")
+f.write(str('Financial Analysis\n----------------\n'))
+f.write(str('Total months : ' + str(totalMonths)))
+f.write(str('\nAverage Change: $' + str(averageChange)))
+f.write(str('\nGreatest Increase in Profits: ' + str(greatestIncrease[0]) + ' ($' + str(greatestIncrease[1]) + ')'))
+f.write(str('\nGreatest Descrease in Profits: ' + str(greatestDecrease[0]) + ' ($' + str(greatestDecrease[1]) + ')'))
+f.close()
