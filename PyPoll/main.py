@@ -59,10 +59,11 @@ for name in candidate:
     if name==candidate_names[3]:
         candidateFour=candidateFour+1
 
-#candidatePercent = len(each_candidate)/totalVotes
-
 #Print results to text file
 print('Elections Results\n----------------')
-print('Total Votes : ' + str(totalVotes))
-print('\n----------------')
-print(str(candidate_names[0])": " str(candidateOne/totalVotes) + ' ('str(candidateOne):')')
+print('Total Votes : ' + str(totalVotes) + '\n----------------')
+print(candidate_names[0] + ': ' + ("{:.0%}".format(candidateOne/totalVotes)) + ' (' + str(candidateOne) + ')')
+print(candidate_names[1] + ': ' + ("{:.0%}".format(candidateTwo/totalVotes)) + ' (' + str(candidateTwo) + ')')
+print(candidate_names[2] + ': ' + ("{:.0%}".format(candidateThree/totalVotes)) + ' (' + str(candidateThree) + ')')
+print(candidate_names[3] + ': ' + ("{:.0%}".format(candidateFour/totalVotes)) + ' (' + str(candidateFour) + ')')
+
