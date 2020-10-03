@@ -48,11 +48,13 @@ totalAmount = sum(profitLoss)
 revenueChange = []
 for x in range(0,totalMonths-1):
     revenueChange.append(profitLoss[x+1]-profitLoss[x])
-averageChange=(sum(revenueChange)/(totalMonths-1))
+averageChange=format((sum(revenueChange)/(totalMonths-1)), '.2f')
 
 # # # Print the analysis to the terminal and export a text file with the results
 print('Financial Analysis\n----------------')
 print('Total months : ' + str(totalMonths))
 print('Average Change: $' + str(averageChange))
-print('Greatest Increase in Profits: ' + str(greatestIncrease))
-print('Greatest Descrease in Profits: ' + str(greatestDecrease))
+print('Greatest Increase in Profits: ' + str(greatestIncrease[0]) + ' ($' + str(greatestIncrease[1]) + ')')
+print('Greatest Descrease in Profits: ' + str(greatestDecrease[0]) + ' ($' + str(greatestDecrease[1]) + ')')
+
+# Export analysis to text file with the results
