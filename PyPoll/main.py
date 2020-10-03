@@ -1,22 +1,3 @@
-#In this challenge, you are tasked with helping a small, rural town modernize its vote counting process.
-
-#The dataset is composed of three columns: Voter ID, County, and Candidate.
-
-#Analyze the votes and calculates each of the following:
-
-#The total number of votes cast (done)
-
-#A complete list of candidates who received votes (done)
-
-#The percentage of votes each candidate won
-
-#The total number of votes each candidate won
-
-#The winner of the election based on popular vote.
-
-print('start!')
-
-
 #create lists
 candidate = []
 
@@ -47,17 +28,30 @@ candidateOne=0
 candidateTwo=0
 candidateThree=0
 candidateFour=0
+voteTotals=0
 
 #Generate vote numbers for each candidate
 for name in candidate:
     if name == candidate_names[0]:
         candidateOne = candidateOne + 1
+        if candidateOne > voteTotals:
+            voteTotals=candidateOne
+            winner=candidate_names[0]    
     if name == candidate_names[1]:
         candidateTwo=candidateTwo+1
+        if candidateTwo > voteTotals:
+            voteTotals=candidateTwo
+            winner=candidate_names[1]   
     if name == candidate_names[2]:
         candidateThree=candidateThree+1
+        if candidateThree > voteTotals:
+            voteTotals=candidateThree
+            winner=candidate_names[2]   
     if name==candidate_names[3]:
         candidateFour=candidateFour+1
+        if candidateFour > voteTotals:
+            voteTotals=candidateFour
+            winner=candidate_names[3]   
 
 #Print results to text file
 print('Elections Results\n----------------')
@@ -66,4 +60,6 @@ print(candidate_names[0] + ': ' + ("{:.0%}".format(candidateOne/totalVotes)) + '
 print(candidate_names[1] + ': ' + ("{:.0%}".format(candidateTwo/totalVotes)) + ' (' + str(candidateTwo) + ')')
 print(candidate_names[2] + ': ' + ("{:.0%}".format(candidateThree/totalVotes)) + ' (' + str(candidateThree) + ')')
 print(candidate_names[3] + ': ' + ("{:.0%}".format(candidateFour/totalVotes)) + ' (' + str(candidateFour) + ')')
+print('----------------')
+print('Winner: ' + winner + '\n----------------')
 
