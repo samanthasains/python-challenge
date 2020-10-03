@@ -67,7 +67,6 @@ for k,v in results.items():
 print('----------------')
 print('Winner: ' + str(next(iter(results))) + '\n----------------')
 
-
 #Print results to text file
 f= open("PyPollResults.txt", "a")
 f.write(str('Elections Results\n----------------\n'))
