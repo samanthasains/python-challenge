@@ -59,11 +59,21 @@ for name in candidate:
 #Sort dictionary by votes
 results=dict(sorted(voteDict.items(), key=lambda x: x[1], reverse=True))    
 
-#Print results to text file
+#Print results to terminal
 print('Elections Results\n----------------')
 print('Total Votes : ' + str(totalVotes) + '\n----------------')
 for k,v in results.items():
-    print(k,v)  
+    print(k,v) 
 print('----------------')
 print('Winner: ' + str(next(iter(results))) + '\n----------------')
 
+
+#Print results to text file
+f= open("PyPollResults.txt", "a")
+f.write(str('Elections Results\n----------------\n'))
+f.write(str('Total Votes : ' + str(totalVotes) + '\n----------------\n'))
+for k,v in results.items():
+    f.write(str((k,v)))
+f.write(str(('\n----------------\n')))
+f.write(str('Winner: ' + str(next(iter(results))) + '\n----------------'))
+f.close()
