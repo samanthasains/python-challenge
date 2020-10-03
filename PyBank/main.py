@@ -3,6 +3,7 @@ date = []
 profitLoss = []
 greatestIncrease = ['',0]
 greatestDecrease = ['', 1000000]
+revenueChange = []
 
 # Path to collect data from the Resources folder
 import csv
@@ -11,13 +12,17 @@ with open('C:/Users/saman/Documents/NU_Data_Science_Bootcamp/python-challenge/Py
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',') 
+    
+    #skip header row when reading data into lists
     header = next(csvreader)
+    
+    #Write just the first row to account for off by one when calculating differences
     firstRow = next(csvreader)
-
     date.append(firstRow[0])    
     profitLoss.append(int(firstRow[1]))
     previousRow=int(firstRow[1])
 
+    #skipping header, iterate through each row from csv file
     if header != None:
         for row in csvreader:
         
@@ -26,31 +31,33 @@ with open('C:/Users/saman/Documents/NU_Data_Science_Bootcamp/python-challenge/Py
     
             #Add profit/loss
             profitLoss.append(int(row[1])) 
-
+            
+            #Write difference between profit/loss to previousRow list
             change=int(row[1])-previousRow
             previousRow=int(row[1])
 
+            #If change row value is higher than previous max value, set as greatest increase
             if change>greatestIncrease[1]:
                 greatestIncrease[0]=row[0]
                 greatestIncrease[1]=change
             
+            #If change row value is lower than previous min value, set as greatest decrease
             if change<greatestDecrease[1]:
                 greatestDecrease[0]=row[0]
                 greatestDecrease[1]=change
 
-# # Find the total number of months included in the dataset - count of items
+# Find the total number of months included in the dataset
 totalMonths = len(date)
 
-# #Find the net total amount of "Profit/Losses" over the entire period - sum of the values in [1]
+# Find the net total amount of "Profit/Losses" over the entire period
 totalAmount = sum(profitLoss)                    
 
-# # Find the average of the changes in "Profit/Losses" over the entire period - average of the values in [1]
-revenueChange = []
+# Find the average of the changes in "Profit/Losses" over the entire period 
 for x in range(0,totalMonths-1):
     revenueChange.append(profitLoss[x+1]-profitLoss[x])
 averageChange=format((sum(revenueChange)/(totalMonths-1)), '.2f')
 
-# # # Print the analysis to the terminal and export a text file with the results
+# Print the analysis to the terminal
 print('Financial Analysis\n----------------')
 print('Total months : ' + str(totalMonths))
 print('Average Change: $' + str(averageChange))
