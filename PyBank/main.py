@@ -49,6 +49,9 @@ with open('C:/Users/saman/Documents/NU_Data_Science_Bootcamp/python-challenge/Py
 # Find the total number of months included in the dataset
 totalMonths = len(date)
 
+#Find total profits
+totalProfit=sum(profitLoss)
+
 # Find the net total amount of "Profit/Losses" over the entire period
 totalAmount = sum(profitLoss)                    
 
@@ -59,6 +62,7 @@ averageChange=format((sum(revenueChange)/(totalMonths-1)), '.2f')
 
 # Print the analysis to the terminal
 print('Financial Analysis\n----------------')
+print('Total Profits: ' + str(totalProfit))
 print('Total months : ' + str(totalMonths))
 print('Average Change: $' + str(averageChange))
 print('Greatest Increase in Profits: ' + str(greatestIncrease[0]) + ' ($' + str(greatestIncrease[1]) + ')')
@@ -67,6 +71,7 @@ print('Greatest Descrease in Profits: ' + str(greatestDecrease[0]) + ' ($' + str
 # Export analysis to text file with the results
 f= open("PyBankResults.txt", "a")
 f.write(str('Financial Analysis\n----------------\n'))
+f.write(str('Total Profits: ' + str(totalProfit)))
 f.write(str('Total months : ' + str(totalMonths)))
 f.write(str('\nAverage Change: $' + str(averageChange)))
 f.write(str('\nGreatest Increase in Profits: ' + str(greatestIncrease[0]) + ' ($' + str(greatestIncrease[1]) + ')'))
